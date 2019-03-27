@@ -1,0 +1,22 @@
+{
+  "name": "supplement_database",
+  "version": "1.0.0",
+  "description": "Meagan's_supplement_database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olsenme/supplementDB.git"
+  },
+  "author": "Meagan Olsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olsenme/supplementDB/issues"
+  },
+  "homepage": "https://github.com/olsenme/supplementDB#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
