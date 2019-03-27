@@ -1,5 +1,8 @@
-var http = require('http');
-function requestHandler(req,res){
+//var http = require('http');
+var express = require('express');
+var app = express();
+var logger = require('./logger');
+/*function requestHandler(req,res){
     console.log("Request received");
     console.log(" -method", req.method);
     console.log(" -url", req.url);
@@ -12,9 +15,14 @@ function requestHandler(req,res){
     res.write("</body>");
     res.write("</html>");
     res.end();
-}
-var server = http.createServer(requestHandler);
-server.listen('5000', function(err){
+}*/
+app.use(logger);
+app.get("/",function(req,res){
+    var content = "<html><body><h1>Our server is working!</h1></body></html>";
+    res.status(200).send(content);
+});
+//var server = http.createServer(requestHandler);
+app.listen('5000', function(err){
     if(err){
         throw err;
     }
