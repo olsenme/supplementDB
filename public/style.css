@@ -1,0 +1,39 @@
+.body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    background-color: #dadada;
+}
+header {
+    background-color: #ccebff;
+    color: white;
+}
+a{
+    text-decoration:none;
+     color: #03a9f4;
+}
+a:hover {
+  color: #0c719e;
+}
+.site-title{
+    margin:0;
+    padding:20px;
+}
+.navbar{
+    font-size:22px;
+
+}
+.navlist {
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+}
+.nav-item:hover {
+  background-color: rgba(231, 132, 119, 0.18);
+}
+.nav-item a {
+  display: inline-block;
+  color: #454545;
+  padding: 10px 20px;
+}

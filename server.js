@@ -17,10 +17,16 @@ var logger = require('./logger');
     res.end();
 }*/
 app.use(logger);
-app.get("/",function(req,res){
+app.use(express.static('public'));
+/*app.get("/",function(req,res){
     var content = "<html><body><h1>Our server is working!</h1></body></html>";
     res.status(200).send(content);
-});
+});*/
+/*app.get("*",function(req,res,next){
+    res.status(404);
+    res.send("The page you requested could not be found.");
+
+}*/
 //var server = http.createServer(requestHandler);
 app.listen('5000', function(err){
     if(err){
