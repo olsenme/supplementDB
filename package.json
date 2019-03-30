@@ -9,7 +9,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "handlebars views/partials/productCard.handlebars -f public/productCardTemplate.js",
     "prestart": "npm run build"
-
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
     "handlebars": "^4.1.1"
   }
 }
