@@ -1,4 +1,5 @@
-function createProductCard(name,photoURL, rating, quantity,price,description)
+/*Creates the structure for the product card*/
+function createProductCard(name, photoURL, rating, quantity, price, description)
 {
 
     var productCardSection = document.createElement('section');
@@ -11,7 +12,7 @@ function createProductCard(name,photoURL, rating, quantity,price,description)
 
     var imgContainerDiv = document.createElement('div');
     imgContainerDiv.classList.add('img-container');
-    productCardSection.appendchild('imgContainerDiv);
+    productCardSection.appendchild(imgContainerDiv);
 
     var img = document.createElement('img');
     img.classList.add('product-photo-img');
@@ -49,11 +50,69 @@ function createProductCard(name,photoURL, rating, quantity,price,description)
 
     return productCardSection;
 }
-window.addEventListener('DOMContentLoaded',function(){
+/*Populates the info for the supplement card*/
+function handleModalAcceptClick()
+{
+
+    var name = document.getElementById('supplement-name-input').value.trim();
+    var url = document.getElementById('supplement-url-input').value.trim();
+    var rating = document.getElementById('supplement-rating-input').value.trim();
+    var quantity = document.getElementById('supplement-quantity-input').value.trim();
+    var price = document.getElementById('supplement-price-input').value.trim();
+    var description = document.getElementById('supplement-description-input').value.trim();
+
+    if(!name || !url || !rating || !quantity || !price || !description)
+    {
+        alert("You must fill in all fields!");
+    }
+    else
+    {
+        var productCardHTML= Handlebars.templates.productCard({
+            name:name,
+            url:url,
+            rating:rating,
+            quantity:quantity,
+            price:price,
+            description:description});
+         console.log(productCardHTML);
+         var productCardContainer = document.querySelector('product-card-container');
+         productCardContainer.insertAdjacentHTML('beforeend',productCardHTML);
+         hideModal();
+     }
+}
+/*Shows modal*/
+function showModal()
+{
+    var modal = document.getElementById('add-product-modal');
+    var modalBackdrop = document.getElementById('modal-backdrop');
+    modal.classList.remove('hidden');
+    modalBackdrop.classList.remove('hidden');
+}
+/*Hides Modal*/
+function hideModal(){
+    var modal = document.getElementById('add-product-modal');
+    var modalBackdrop = document.getElementById('modal-backdrop');
+    modal.classList.add('hidden');
+    modalBackdrop.classList.add('hidden');
+    clearModalInputs();
+}
+/*Clears modal inputs*/
+function clearModalInputs(){
+    var modalInputs = document.querySelectorAll('#add-product-modal input');
+    for(var i=0; i<modalInputs.length; i++){
+        modalInputs[i].value = '';
+    }
+}
+/*hooks up UI elements*/
+window.addEventListener('DOMContentLoaded', function() {
     var addProductButton = document.getElementById('add-product-button');
+    addProductButton.addEventListener('click',showModal);
+    var modalAcceptButton = document.getElementById('modal-accept');
+    modalAcceptButton.addEventListener('click',handleModalAcceptClick);
+    var modalHideButtons = document.getElementsByClassName('modal-hide-button');
 
-}
-function addNewSupplement(){
-    
-
-}
+    for(var i=0;i<modalHideButtons.length;i++)
+    {
+        modalHideButtons[i].addEventListener('click',hideModal);
+    }
+});

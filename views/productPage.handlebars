@@ -2,10 +2,52 @@
     <div class="title-container">
         <h2>Check out these products</h2>
     </div>
+    <!--Array of productCards-->
     <div class="product-card-container">
         {{#each productData}}
         {{>productCard}}
         {{/each}}
     </div>
 </main>
-<button type="button" id="add-product-button"<i class="fas fa-plus"</i>
+
+<button type="button" id="add-product-button"><i class="fas fa-plus"></i></button>
+
+<div id="modal-backdrop" class="hidden"></div>
+<div id="add-product-modal" class="hidden">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3>Add a supplement</h3>
+            <button type="button" id="modal-close" class="modal-hide-button">&times</button>
+        </div>
+        <div class="modal-body">
+             <div class="supplement-input-element">
+                 <label for="supplement-name-input">Name of Supplement</label>
+                 <input type="text" id="supplement-name-input"></input>
+             </div>
+             <div class="supplement-input-element">
+                 <label for="supplement-url-input">Photo URL</label>
+                 <input type="text" id="supplement-url-input"></input>
+             </div>
+             <div class="supplement-input-element">
+                 <label for="supplement-rating-input">Supplement Rating</label>
+                 <input type="text" id="supplement-rating-input"></input>
+             </div>
+             <div class="supplement-input-element">
+                 <label for="supplement-quantity-input"> Quantity on hand</label>
+                 <input type="text" id="supplement-quantity-input"></input>
+             </div>
+             <div class="supplement-input-element">
+                 <label for="supplement-price-input"> Price</label>
+                 <input type="text" id="supplement-price-input"></input>
+             </div>
+             <div class="supplement-input-element">
+                 <label for="supplement-description-input">Description</label>
+                 <input type="text" id="supplement-description-input"></input>
+             </div>
+         </div>
+         <div class="modal=footer">
+             <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+             <button type="button" id="modal-accept" class="action-button"> Create Post</button>
+         </div>
+     </div>
+</div>
