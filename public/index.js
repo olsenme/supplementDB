@@ -53,31 +53,59 @@ function createProductCard(name, photoURL, rating, quantity, price, description)
 /*Populates the info for the supplement card*/
 function handleModalAcceptClick()
 {
-
+    //get all the inputs from the handlebars
     var name = document.getElementById('supplement-name-input').value.trim();
     var url = document.getElementById('supplement-url-input').value.trim();
     var rating = document.getElementById('supplement-rating-input').value.trim();
     var quantity = document.getElementById('supplement-quantity-input').value.trim();
     var price = document.getElementById('supplement-price-input').value.trim();
     var description = document.getElementById('supplement-description-input').value.trim();
-
+    //make sure all fields are filled in
     if(!name || !url || !rating || !quantity || !price || !description)
     {
         alert("You must fill in all fields!");
     }
     else
     {
-        var productCardHTML= Handlebars.templates.productCard({
-            name:name,
+        var postRequest = newXMLHttpRequest();
+        var requestURL = '/' + name + '/addSupplement';
+        postRequest.open('POST',requestURL);
+
+        var requestBody = JSON.stringify({
+            name: name,
             url:url,
             rating:rating,
             quantity:quantity,
-            price:price,
-            description:description});
-         console.log(productCardHTML);
-         var productCardContainer = document.querySelector('product-card-container');
-         productCardContainer.insertAdjacentHTML('beforeend',productCardHTML);
-         hideModal();
+            price: price,
+            description:description
+        });
+        //populate request to send to server
+        postRequest.addEventListener('load', function(event){
+            if(event.target.status === 200){
+                var productCardTemplate = Handlebars.templates.productCard;
+                var productCardHTML = productCardTemplate ({
+                    name:name,
+                    url:url,
+                    rating:rating,
+                    quantity:quantity,
+                    price:price,
+                    description:description
+                });
+                 var productCardContainer = document.querySelector('.product-card-container');
+                 productCardContainer.insertAdjacentHTML('beforeend',productCardHTML);
+
+            }
+            else {
+                    alert('Error storing supplement' + event.target.response);
+                }
+            });
+
+            postRequest.setRequestHeader('Content-Type', 'application/json');
+            postRequest.send(requestBody);
+            hideModal();
+
+        // console.log(productCardHTML);
+
      }
 }
 /*Shows modal*/
