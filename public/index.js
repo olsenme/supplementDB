@@ -1,5 +1,5 @@
 /*Creates the structure for the product card*/
-function createProductCard(name, photoURL, rating, quantity, price, description)
+function createProductCard(name, url, rating, quantity, price, description)
 {
 
     var productCardSection = document.createElement('section');
@@ -53,6 +53,7 @@ function createProductCard(name, photoURL, rating, quantity, price, description)
 /*Populates the info for the supplement card*/
 function handleModalAcceptClick()
 {
+
     //get all the inputs from the handlebars
     var name = document.getElementById('supplement-name-input').value.trim();
     var url = document.getElementById('supplement-url-input').value.trim();
@@ -67,7 +68,7 @@ function handleModalAcceptClick()
     }
     else
     {
-        var postRequest = newXMLHttpRequest();
+        var postRequest = new XMLHttpRequest();
         var requestURL = '/' + name + '/addSupplement';
         postRequest.open('POST',requestURL);
 

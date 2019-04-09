@@ -138,7 +138,7 @@ app.post('/:name/addSupplement', function(req,res){
         res.status(400).send("Requests must contain all fields");
     }
 });*/
-        const supplement = new supplement({
+        const supplement = new Supplement({
             name: req.body.name,
             url: req.body.url,
             rating: req.body.rating,
@@ -157,6 +157,9 @@ app.post('/:name/addSupplement', function(req,res){
                         error:error});
                     });
 
+    }
+    else {
+        res.status(400).send("Requests must contain all fields");
     }
 });
 
