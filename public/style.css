@@ -54,9 +54,11 @@ a:hover {
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: center;
+  /*text-align: center;*/
   margin: 5px;
-
+}
+.center {
+  text-align: center;
 }
 .product-photo-img {
   max-height: 300px;
@@ -79,14 +81,31 @@ a:hover {
   font-weight: 400;
 }
 #add-product-button {
-  position: fixed;
+  position:fixed;
   right: 30px;
-  bottom: 30px;
+  bottom:30px;
   height: 60px;
   width: 60px;
   border: none;
   border-radius: 30px;
   font-size: 30px;
+  background-color: #ee5e4b;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+#edit-product-button {
+  display: flex;
+  align-items: flex-end; /*vertical*/
+  align-content: flex-end;
+  justify-content: flex-end; /*horizontal*/
+   /*align-self: flex-end;*/
+   /*bottom: 30px;*/
+   height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
   background-color: #ee5e4b;
   color: #fff;
   cursor: pointer;
