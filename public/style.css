@@ -4,8 +4,9 @@
     background-color: #dadada;
 }
 header {
-    background-color: #ccebff;
-    color: white;
+    background-color:#D5EEF1;
+    color: black;
+    height:150px;
 }
 a{
     text-decoration:none;
@@ -17,56 +18,41 @@ a:hover {
 .site-title{
     margin:0;
     padding:20px;
+    font-weight:normal;
 }
 .navbar{
     font-size:22px;
-
 }
 .navlist {
   margin: 0;
   list-style: none;
+  background-color: #003449;
 }
 .nav-item {
   display: inline-block;
+
 }
 .nav-item:hover {
   background-color: rgba(231, 132, 119, 0.18);
 }
 .nav-item a {
   display: inline-block;
-  color: #454545;
+  color:white;
   padding: 10px 20px;
 }
-.product-card-container{
-    display:flex;
-    flex-wrap:wrap;
-    padding:5px;
+.prouct-page{
+  display:grid;
+  min-height: 100%;
+  grid-template-areas:"content content content"
+                      "footer footer footer";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 200px;
 }
-/*.prod-card {
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 28px;
-}*/
-.product-card {
-  flex: 1 32%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  /*text-align: center;*/
-  margin: 5px;
-}
-.center {
-  text-align: center;
-}
-.product-photo-img {
-  max-height: 300px;
+.main{
+  grid-area: content;
 }
 .title-container {
-  margin: 10px;
   padding: 20px;
-  border: 1px solid #ccc;
   background-color: #fff;
   text-align: center;
 }
@@ -76,37 +62,90 @@ a:hover {
   font-weight: 400;
 }
 .title-container h2 {
-  margin: 10px 0;
-  font-size: 48px;
-  font-weight: 400;
+  font-weight: normal;
+}
+.product-card-container{
+  display:grid;
+  min-height: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:2rem;
+  grid-auto-rows:1fr 1fr 1fr;
+}
+.footer{
+  background-color: :#D5EEF1;
 }
 #add-product-button {
   position:fixed;
   right: 30px;
   bottom:30px;
+  background-color: black;
   height: 60px;
   width: 60px;
   border: none;
   border-radius: 30px;
   font-size: 30px;
-  background-color: #ee5e4b;
+  background-color: #003449;
   color: #fff;
   cursor: pointer;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
 }
+
+
+.product-card {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 6fr 1fr;
+  grid-template-areas:"pic info"
+                      "foot foot";
+  /*border: 1px solid #ccc;*/
+  background-color: #fff;
+}
+.img-container{
+grid-area:pic;
+}
+.img-container img{
+  display:block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.info-container{
+justify-self: center;
+align-self:space-around;
+grid-area:info;
+max-width:50%;
+max-height: 75%;
+display:grid;
+grid-template-rows: 1fr .5fr;
+grid-template-areas:"information"
+                    "numvotes";
+}
+.info{
+  grid-area:information;
+}
+.votes{
+  grid-area:numvotes;
+  justify-self: center;
+  align-self: center;
+}
 #edit-product-button {
-  display: flex;
-  align-items: flex-end; /*vertical*/
-  align-content: flex-end;
-  justify-content: flex-end; /*horizontal*/
-   /*align-self: flex-end;*/
-   /*bottom: 30px;*/
-   height: 30px;
+
+  height: 30px;
   width: 30px;
   border: none;
   border-radius: 30px;
   font-size: 20px;
-  background-color: #ee5e4b;
+  background-color: #003449;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+#delete-product-button {
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  background-color: #003449;
   color: #fff;
   cursor: pointer;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
@@ -122,6 +161,24 @@ a:hover {
 }
 #add-product-button:focus {
   outline: none;
+}
+#vote-button{
+  grid-area:vote;
+  margin-bottom: 5px;
+  margin-right:5px;
+
+}
+.bottom{
+  grid-area:foot;
+  background-color:white;
+  display:grid;
+  grid-template-columns: .5fr .5fr;
+  grid-template-areas:"buttons vote";
+}
+.buttons{
+  grid-area:buttons;
+  display:flex;
+  justify-content: space-around;
 }
 /*Modal*/
 #modal-backdrop {
@@ -176,7 +233,6 @@ a:hover {
   margin: 0;
   font-size: 28px;
 }
-
 #modal-close{
 position: absolute;
  right: 10px;
@@ -201,14 +257,12 @@ cursor: pointer;
   flex: 1 75px;
   margin-right: 10px;
 }
-
 .supplement-input-element input {
   flex: 6 200px;
   padding: 8px;
   font-size: 20px;
   border: 1px solid #aaa;
 }
-
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -219,11 +273,14 @@ cursor: pointer;
   margin-right: auto;
   margin-left: auto;
 }
-
 #modal-cancel {
   color: #333;
   background-color: #fff;
 }
 #modal-cancel:hover {
   background-color: #eee;
+}
+footer {
+  background-color:#D5EEF1;
+  height:150px;
 }

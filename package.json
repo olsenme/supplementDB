@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "handlebars": "^4.1.2",
+    "lodash": "^4.17.14",
     "mongodb": "^3.2.7",
     "mongoose": "^5.4.22"
   }

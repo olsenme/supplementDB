@@ -1,4 +1,5 @@
 <main class="product-page">
+  <div class="main">
     <div class="title-container">
         <h2>Check out these products</h2>
     </div>
@@ -8,12 +9,13 @@
         {{>productCard}}
         {{/each}}
     </div>
-</main>
-
-<button type="button" id="add-product-button"><i class="fas fa-plus"></i></button>
-
-<div id="modal-backdrop" class="hidden"></div>
-<div id="add-product-modal" class="hidden">
+  </div>
+   <div class="footer">
+     <button type="button" id="add-product-button"><i class="fas fa-plus"></i></button>
+   </div>
+  <div class="modal">
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="add-product-modal" class="hidden">
     <div class="modal-dialog">
         <div class="modal-header">
             <h3>Add a supplement</h3>
@@ -50,4 +52,6 @@
              <button type="button" id="modal-accept" class="action-button"> Create Post</button>
          </div>
      </div>
-</div>
+    </div>
+  </div>
+</main>
