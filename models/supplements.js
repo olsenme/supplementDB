@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const supplementSchema = new mongoose.Schema({
     name: { type: String, required:true },
     url: { type: String, required: true },
@@ -8,3 +8,4 @@ const supplementSchema = new mongoose.Schema({
     description: { type: String, required: true }
 });
 module.exports = mongoose.model('Supplement',supplementSchema);
+*/

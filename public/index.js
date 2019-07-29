@@ -11,13 +11,9 @@ function createProductCard(name, url, rating, quantity, price, description)
 
 
     var img = document.createElement('img');
-  /*  img.classList.add('product-photo-img');*/
     img.src=photoURL;
     imgContainerDiv.appendchild(img);
 
-    /*var textContainer = document.createElement('div');
-    textContainer.classList.add('center');
-    productCardSection.appendchild(textContainer);*/
     var infoContainer = document.createElement('div');
     infoContainer.classList.add('info-container');
     productCardSection.appendchild(infoContainer);
@@ -27,33 +23,15 @@ function createProductCard(name, url, rating, quantity, price, description)
     nameContainerDiv.textContent = name;
     infoContainer.appendchild(nameContainerDiv);
 
-  /*  var ratingContainerDiv = document.createElement('div');
-    nameContainerDiv.classList.add('rating-container');
-    nameContainerDiv.textContent = rating;
-    infoContainer.appendchild(ratingContainerDiv);*/
-    //productCardSection.appendchild(ratingContainerDiv);
-
     var quantityContainerDiv = document.createElement('div');
     nameContainerDiv.classList.add('quantity-container');
     nameContainerDiv.textContent = quantity;
     infoContainer.appendchild(quantityContainerDiv);
-    //productCardSection.appendchild(quantityContainerDiv);
 
     var priceContainerDiv = document.createElement('div');
     nameContainerDiv.classList.add('price-container');
     nameContainerDiv.textContent = price;
     infoContainer.appendchild(priceContainerDiv);
-  //  productCardSection.appendchild(priceContainerDiv);
-
-    /*var descriptionContainerDiv = document.createElement('div');
-    nameContainerDiv.classList.add('description-container');
-    //productCardSection.appendchild(descriptionContainerDiv);
-    infoContainer.appendchild(descriptionContainerDiv);
-
-    var p = document.createElement('p');
-    p.classList.add('product-description');
-    p.textContent = description;
-    descriptionContainerDiv.appendchild(p);*/
 
     var bottomContainer = document.createElement('div');
     bottomContainer.classList.add('bottom');
@@ -76,62 +54,64 @@ function createProductCard(name, url, rating, quantity, price, description)
 
     return productCardSection;
 }
+function storeInDB(name, url,quantity, price, description){
+
+  var postRequest = new XMLHttpRequest();
+  var requestURL = '/addSupplement';
+  postRequest.open('POST',requestURL);
+
+/*populate request body*/
+  var requestBody = JSON.stringify({
+      name: name,
+      url:url,
+      //rating:rating,
+      quantity:quantity,
+      price: price,
+      description:description
+  });
+  //update UI
+  postRequest.addEventListener('load', function(event){
+      if(event.target.status === 200){
+          var productCardTemplate = Handlebars.templates.productCard;
+          var productCardHTML = productCardTemplate ({
+              name:name,
+              url:url,
+              //rating:rating,
+              quantity:quantity,
+              price:price,
+              description:description
+          });
+           var productCardContainer = document.querySelector('.product-card-container');
+           productCardContainer.insertAdjacentHTML('beforeend',productCardHTML);
+
+      }
+      else {
+              alert('Error storing supplement' + event.target.response);
+          }
+      });
+
+      postRequest.setRequestHeader('Content-Type', 'application/json');
+      postRequest.send(requestBody);
+}
 /*Populates the info for the supplement card*/
 function handleModalAcceptClick()
 {
-
     //get all the inputs from the handlebars
     var name = document.getElementById('supplement-name-input').value.trim();
     var url = document.getElementById('supplement-url-input').value.trim();
-    var rating = document.getElementById('supplement-rating-input').value.trim();
+  //  var rating = document.getElementById('supplement-rating-input').value.trim();
     var quantity = document.getElementById('supplement-quantity-input').value.trim();
     var price = document.getElementById('supplement-price-input').value.trim();
     var description = document.getElementById('supplement-description-input').value.trim();
     //make sure all fields are filled in
-    if(!name || !url || !rating || !quantity || !price || !description)
+    if(!name || !url || !quantity || !price || !description)
     {
         alert("You must fill in all fields!");
     }
     else
     {
-        var postRequest = new XMLHttpRequest();
-        var requestURL = '/' + name + '/addSupplement';
-        postRequest.open('POST',requestURL);
-
-        var requestBody = JSON.stringify({
-            name: name,
-            url:url,
-            rating:rating,
-            quantity:quantity,
-            price: price,
-            description:description
-        });
-        //populate request to send to server
-        postRequest.addEventListener('load', function(event){
-            if(event.target.status === 200){
-                var productCardTemplate = Handlebars.templates.productCard;
-                var productCardHTML = productCardTemplate ({
-                    name:name,
-                    url:url,
-                    rating:rating,
-                    quantity:quantity,
-                    price:price,
-                    description:description
-                });
-                 var productCardContainer = document.querySelector('.product-card-container');
-                 productCardContainer.insertAdjacentHTML('beforeend',productCardHTML);
-
-            }
-            else {
-                    alert('Error storing supplement' + event.target.response);
-                }
-            });
-
-            postRequest.setRequestHeader('Content-Type', 'application/json');
-            postRequest.send(requestBody);
+            storeInDB(name,url,quantity,price,description);
             hideModal();
-
-        // console.log(productCardHTML);
 
      }
 }
