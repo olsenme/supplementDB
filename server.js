@@ -27,6 +27,7 @@ var mongoPassword = process.env.MONGO_PASSWORD;
 var mongoDBName = process.env.MONGO_DB_NAME;
 
 
+
 //mongoose.connect('mongodb://localhost:27017/supplementDB', {useNewUrlParser: true});
 //var db = mongoose.connection;
 //db.on('error', console.error.bind(console, 'connection error:'));
@@ -63,7 +64,9 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });*/
-
+/*Handlebars.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});*/
 app.get('/', function(req,res,next){
 /*res.render('productPage',{productData:productData});*/
 var supplement = mongoDatabase.collection('supplements');
@@ -115,8 +118,9 @@ app.post('/addSupplement', function(req,res){
         res.status(400).send("Requests must contain JSON body with all fields");
        }
 });
-
-
+app.get('/about', function(req,res,next){
+  res.status(200).render('about');
+});
 
 app.get("*",function(req,res,next){
     res.status(404);

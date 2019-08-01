@@ -9,7 +9,6 @@ function createProductCard(name, url, rating, quantity, price, description)
     imgContainerDiv.classList.add('img-container');
     productCardSection.appendchild(imgContainerDiv);
 
-
     var img = document.createElement('img');
     img.src=photoURL;
     imgContainerDiv.appendchild(img);
@@ -33,7 +32,15 @@ function createProductCard(name, url, rating, quantity, price, description)
     nameContainerDiv.textContent = price;
     infoContainer.appendchild(priceContainerDiv);
 
-    var bottomContainer = document.createElement('div');
+    var voteContainerDiv = document.createElement('div');
+    voteContainerDiv.classList.add('vote-container');
+    infoContainer.appendchild(voteContainerDiv);
+
+    var buttonContainerDiv = document.createElement('div');
+    voteContainerDiv.classList.add('button-container');
+    infoContainer.appendchild(buttonContainerDiv);
+
+  /*  var bottomContainer = document.createElement('div');
     bottomContainer.classList.add('bottom');
     productCardSection.appendchild(bottomContainer);
 
@@ -50,27 +57,27 @@ function createProductCard(name, url, rating, quantity, price, description)
     var anotherIcon = document.createElement('i');
     anotherIcon.classList.add("fas fa-trash-alt");
     anotherButton.appendchild(anotherIcon);
-    bottomContainer.appendchild(anotherButton);
+    bottomContainer.appendchild(anotherButton);*/
 
     return productCardSection;
 }
-function storeInDB(name, url,quantity, price, description){
+/*function storeInDB(name, url,quantity, price, description){
 
   var postRequest = new XMLHttpRequest();
   var requestURL = '/addSupplement';
   postRequest.open('POST',requestURL);
-
+*/
 /*populate request body*/
-  var requestBody = JSON.stringify({
+  /*var requestBody = JSON.stringify({
       name: name,
       url:url,
       //rating:rating,
       quantity:quantity,
       price: price,
       description:description
-  });
+  });*/
   //update UI
-  postRequest.addEventListener('load', function(event){
+  /*postRequest.addEventListener('load', function(event){
       if(event.target.status === 200){
           var productCardTemplate = Handlebars.templates.productCard;
           var productCardHTML = productCardTemplate ({
@@ -92,9 +99,9 @@ function storeInDB(name, url,quantity, price, description){
 
       postRequest.setRequestHeader('Content-Type', 'application/json');
       postRequest.send(requestBody);
-}
+}*/
 /*Populates the info for the supplement card*/
-function handleModalAcceptClick()
+/*function handleModalAcceptClick()
 {
     //get all the inputs from the handlebars
     var name = document.getElementById('supplement-name-input').value.trim();
@@ -114,40 +121,48 @@ function handleModalAcceptClick()
             hideModal();
 
      }
-}
+}*/
 /*Shows modal*/
-function showModal()
+/*function showModal()
 {
     var modal = document.getElementById('add-product-modal');
     var modalBackdrop = document.getElementById('modal-backdrop');
     modal.classList.remove('hidden');
     modalBackdrop.classList.remove('hidden');
-}
+}*/
 /*Hides Modal*/
-function hideModal(){
+/*function hideModal(){
     var modal = document.getElementById('add-product-modal');
     var modalBackdrop = document.getElementById('modal-backdrop');
     modal.classList.add('hidden');
     modalBackdrop.classList.add('hidden');
     clearModalInputs();
-}
+}*/
 /*Clears modal inputs*/
-function clearModalInputs(){
+/*function clearModalInputs(){
     var modalInputs = document.querySelectorAll('#add-product-modal input');
     for(var i=0; i<modalInputs.length; i++){
         modalInputs[i].value = '';
     }
-}
-/*hooks up UI elements*/
-window.addEventListener('DOMContentLoaded', function() {
-    var addProductButton = document.getElementById('add-product-button');
-    addProductButton.addEventListener('click',showModal);
-    var modalAcceptButton = document.getElementById('modal-accept');
-    modalAcceptButton.addEventListener('click',handleModalAcceptClick);
-    var modalHideButtons = document.getElementsByClassName('modal-hide-button');
 
-    for(var i=0;i<modalHideButtons.length;i++)
+}*/
+
+});
+/*hooks up UI elements*/
+//window.addEventListener('DOMContentLoaded', function() {
+  //  var voteButton = document.getElementById('vote-button');
+    /*$(document).ready(function(){
+      $("#vote-button").on('click', function(){
+        var voteCount = $("#vote").val();
+        voteCount=voteCount+1;
+      })*/
+    //});
+    //var modalAcceptButton = document.getElementById('modal-accept');
+  //  modalAcceptButton.addEventListener('click',handleModalAcceptClick);
+  //  var modalHideButtons = document.getElementsByClassName('modal-hide-button');
+
+    /*for(var i=0;i<modalHideButtons.length;i++)
     {
         modalHideButtons[i].addEventListener('click',hideModal);
-    }
-});
+    }*/
+//});
