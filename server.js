@@ -87,7 +87,7 @@ supplementCursor.toArray((err,results) =>
   }
 });
 });
-app.post('/addSupplement', function(req,res){
+/*app.post('/addSupplement', function(req,res){
   if(req.body && req.body.name && req.body.url && req.body.quantity && req.body.price && req.body.description)
     {
         console.log("adding",req.body.name);
@@ -117,9 +117,12 @@ app.post('/addSupplement', function(req,res){
   else {
         res.status(400).send("Requests must contain JSON body with all fields");
        }
-});
+});*/
 app.get('/about', function(req,res,next){
   res.status(200).render('about');
+});
+app.get('/contact', function(req,res,next){
+  res.status(200).render('contact');
 });
 
 app.get("*",function(req,res,next){

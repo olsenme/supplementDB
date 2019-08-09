@@ -77,6 +77,9 @@ a:hover {
 .footer{
   background-color: :#D5EEF1;
 }
+.text{
+  font-size: 16;
+}
 /*#add-product-button {
   position:fixed;
   right: 30px;

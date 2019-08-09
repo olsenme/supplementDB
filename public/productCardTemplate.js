@@ -5,11 +5,11 @@ templates['productCard'] = template({"compiler":[7,">= 4.0.0"],"main":function(c
 
   return "<section class=\"product-card\">\r\n    <div class=\"img-container\">\r\n        <img src="
     + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
-    + ">\r\n    </div>\r\n    <div class=\"info-container\">\r\n        <div class=\"name-container\">\r\n          <p>name</p>\r\n          <p id=name>"
+    + ">\r\n    </div>\r\n    <div class=\"info-container\">\r\n        <div class=\"name-container\">\r\n          <p class=\"label\">name:</p>\r\n          <p id=name>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</p>\r\n         </div>\r\n        <div class=\"quantity-container\">\r\n          <p>quantity: "
+    + "</p>\r\n         </div>\r\n        <div class=\"quantity-container\">\r\n          <p class=\"label\">quantity:</p>\r\n          <p>"
     + alias4(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quantity","hash":{},"data":data}) : helper)))
-    + "</p>\r\n        </div>\r\n        <div class=\"price-container\">\r\n          <p>price: "
+    + "</p>\r\n        </div>\r\n        <div class=\"price-container\">\r\n          <p class=\"label\">price:</p>\r\n          <p>"
     + alias4(((helper = (helper = helpers.price || (depth0 != null ? depth0.price : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data}) : helper)))
     + "</p>\r\n         </div>\r\n        <!-- <div class=\"vote-container\">\r\n            <h1 id=\"vote\">0</h1>\r\n          </div>-->\r\n          <!--<div class=\"button-container\">\r\n                <button type=\"button\" id=\"vote-button\">\r\n               Vote\r\n            </button>\r\n          </div>-->\r\n      </div>\r\n\r\n      <!--<div class=\"description-container\">\r\n          <p class=\"product-description\">\r\n           description: "
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
