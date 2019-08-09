@@ -147,7 +147,7 @@ function createProductCard(name, url, rating, quantity, price, description)
 
 }*/
 
-});
+//});
 /*hooks up UI elements*/
 //window.addEventListener('DOMContentLoaded', function() {
   //  var voteButton = document.getElementById('vote-button');
