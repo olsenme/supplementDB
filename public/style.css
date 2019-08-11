@@ -110,9 +110,16 @@ a:hover {
 grid-area:pic;
 }
 .img-container img{
-  position: relative;
+  /*position: relative;*/
     width:  175px;
     height: 200px;
+    transition: all 1s;
+    /*transition:all 1s;*/
+    /*transform:scale(1.1);*/
+  }
+ img:hover {
+  transform:scale(1.1);
+}
   /*display:block;
   max-width: 100%;
   max-height: 100%;*/
